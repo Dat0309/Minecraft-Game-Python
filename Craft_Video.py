@@ -8,6 +8,8 @@ brick_texture = load_texture('resource/brick_block.png')
 dirt_texture  = load_texture('resource/dirt_block.png')
 sky_texture   = load_texture('resource/skybox.png')
 arm_texture   = load_texture('resource/arm_texture.png')
+dick_texture = load_texture('resource/dick.png')
+oak_texture = load_texture('resource/Dark_Oak_Leaves.png')
 punch_sound   = Audio('resource/punch_sound',loop = False, autoplay = False)
 block_pick = 1
 
@@ -21,11 +23,12 @@ def update():
 		hand.active()
 	else:
 		hand.passive()
-
 	if held_keys['1']: block_pick = 1
 	if held_keys['2']: block_pick = 2
 	if held_keys['3']: block_pick = 3
 	if held_keys['4']: block_pick = 4
+	if held_keys['5']: block_pick = 5
+	if held_keys['6']: block_pick = 6
 
 class Voxel(Button):
 	def __init__(self, position = (0,0,0), texture = grass_texture):
@@ -46,6 +49,8 @@ class Voxel(Button):
 				if block_pick == 2: voxel = Voxel(position = self.position + mouse.normal, texture = stone_texture)
 				if block_pick == 3: voxel = Voxel(position = self.position + mouse.normal, texture = brick_texture)
 				if block_pick == 4: voxel = Voxel(position = self.position + mouse.normal, texture = dirt_texture)
+				if block_pick == 5: voxel = Voxel(position = self.position + mouse.normal, texture = dick_texture)
+				if block_pick == 6: voxel = Voxel(position = self.position + mouse.normal, texture = oak_texture)
 
 			if key == 'right mouse down':
 				punch_sound.play()
